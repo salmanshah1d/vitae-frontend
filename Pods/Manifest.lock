@@ -1,0 +1,16 @@
+PODS:
+  - SwipeableTabBarController (2.1.1)
+
+DEPENDENCIES:
+  - SwipeableTabBarController
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SwipeableTabBarController
+
+SPEC CHECKSUMS:
+  SwipeableTabBarController: 8f7f04275f510c5babb630f7be1161b5f28567e0
+
+PODFILE CHECKSUM: 1c8615eadfbc197375377cb18d6a8408dc2b47fd
+
+COCOAPODS: 1.7.1

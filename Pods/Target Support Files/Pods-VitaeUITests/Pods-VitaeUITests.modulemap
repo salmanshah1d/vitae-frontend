@@ -1,0 +1,6 @@
+framework module Pods_VitaeUITests {
+  umbrella header "Pods-VitaeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
