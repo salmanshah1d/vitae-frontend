@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15A0B9A085D2D3DAEF782E93 /* Pods_VitaeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3ED94407FECB428508B345 /* Pods_VitaeTests.framework */; };
 		2201DD2723DCD592007C4E7B /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201DD2623DCD592007C4E7B /* CameraController.swift */; };
 		22E627CA23DCB0C900BE5818 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E627C923DCB0C900BE5818 /* AppDelegate.swift */; };
 		22E627CC23DCB0C900BE5818 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E627CB23DCB0C900BE5818 /* SceneDelegate.swift */; };
@@ -21,6 +22,8 @@
 		22E6283C23DCC61200BE5818 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6283B23DCC61200BE5818 /* Shared.swift */; };
 		22E6283E23DCC72B00BE5818 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6283D23DCC72B00BE5818 /* User.swift */; };
 		22E6284523DCC77200BE5818 /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6284423DCC77200BE5818 /* LeaderboardCell.swift */; };
+		B1ADC88D46BA397D0F42269E /* Pods_VitaeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB55D86026C78EE52ECDEF33 /* Pods_VitaeUITests.framework */; };
+		BAEE8016528DAD42049585A1 /* Pods_Vitae.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112D90823B13A94D91FBC951 /* Pods_Vitae.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		112D90823B13A94D91FBC951 /* Pods_Vitae.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vitae.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		201487ECB12183571E35F493 /* Pods-VitaeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitaeUITests.debug.xcconfig"; path = "Target Support Files/Pods-VitaeUITests/Pods-VitaeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2201DD2623DCD592007C4E7B /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		22E627C623DCB0C900BE5818 /* Vitae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vitae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E627C923DCB0C900BE5818 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +66,13 @@
 		22E6283B23DCC61200BE5818 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
 		22E6283D23DCC72B00BE5818 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		22E6284423DCC77200BE5818 /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
+		2E3ED94407FECB428508B345 /* Pods_VitaeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VitaeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3CAA910D844D6009DE94391B /* Pods-Vitae.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vitae.release.xcconfig"; path = "Target Support Files/Pods-Vitae/Pods-Vitae.release.xcconfig"; sourceTree = "<group>"; };
+		AF2E8621384BB801F40ADB1C /* Pods-VitaeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitaeTests.debug.xcconfig"; path = "Target Support Files/Pods-VitaeTests/Pods-VitaeTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B1FF27BCBFBAAB79E4D7832B /* Pods-Vitae.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vitae.debug.xcconfig"; path = "Target Support Files/Pods-Vitae/Pods-Vitae.debug.xcconfig"; sourceTree = "<group>"; };
+		C48187D338DFC1A0138FBB05 /* Pods-VitaeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitaeTests.release.xcconfig"; path = "Target Support Files/Pods-VitaeTests/Pods-VitaeTests.release.xcconfig"; sourceTree = "<group>"; };
+		CB55D86026C78EE52ECDEF33 /* Pods_VitaeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VitaeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE1A856A2EA71DD702B6CEB0 /* Pods-VitaeUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitaeUITests.release.xcconfig"; path = "Target Support Files/Pods-VitaeUITests/Pods-VitaeUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAEE8016528DAD42049585A1 /* Pods_Vitae.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15A0B9A085D2D3DAEF782E93 /* Pods_VitaeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1ADC88D46BA397D0F42269E /* Pods_VitaeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +110,8 @@
 				22E627DF23DCB0CA00BE5818 /* VitaeTests */,
 				22E627EA23DCB0CA00BE5818 /* VitaeUITests */,
 				22E627C723DCB0C900BE5818 /* Products */,
+				34EAA12A83F5257E7FB46982 /* Pods */,
+				B28C96C7C674A27CED17A2D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +195,30 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		34EAA12A83F5257E7FB46982 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B1FF27BCBFBAAB79E4D7832B /* Pods-Vitae.debug.xcconfig */,
+				3CAA910D844D6009DE94391B /* Pods-Vitae.release.xcconfig */,
+				AF2E8621384BB801F40ADB1C /* Pods-VitaeTests.debug.xcconfig */,
+				C48187D338DFC1A0138FBB05 /* Pods-VitaeTests.release.xcconfig */,
+				201487ECB12183571E35F493 /* Pods-VitaeUITests.debug.xcconfig */,
+				DE1A856A2EA71DD702B6CEB0 /* Pods-VitaeUITests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B28C96C7C674A27CED17A2D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				112D90823B13A94D91FBC951 /* Pods_Vitae.framework */,
+				2E3ED94407FECB428508B345 /* Pods_VitaeTests.framework */,
+				CB55D86026C78EE52ECDEF33 /* Pods_VitaeUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -185,9 +226,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22E627F023DCB0CA00BE5818 /* Build configuration list for PBXNativeTarget "Vitae" */;
 			buildPhases = (
+				C053B46719FFD8AC91ED2DE2 /* [CP] Check Pods Manifest.lock */,
 				22E627C223DCB0C900BE5818 /* Sources */,
 				22E627C323DCB0C900BE5818 /* Frameworks */,
 				22E627C423DCB0C900BE5818 /* Resources */,
+				814A53EA6A479DA6C0067FAF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -202,6 +245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22E627F323DCB0CA00BE5818 /* Build configuration list for PBXNativeTarget "VitaeTests" */;
 			buildPhases = (
+				05D4184BF4D73A89A1DC8D1B /* [CP] Check Pods Manifest.lock */,
 				22E627D823DCB0C900BE5818 /* Sources */,
 				22E627D923DCB0C900BE5818 /* Frameworks */,
 				22E627DA23DCB0C900BE5818 /* Resources */,
@@ -220,6 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22E627F623DCB0CA00BE5818 /* Build configuration list for PBXNativeTarget "VitaeUITests" */;
 			buildPhases = (
+				53BCC1CD86AEFBCD66271173 /* [CP] Check Pods Manifest.lock */,
 				22E627E323DCB0CA00BE5818 /* Sources */,
 				22E627E423DCB0CA00BE5818 /* Frameworks */,
 				22E627E523DCB0CA00BE5818 /* Resources */,
@@ -303,6 +348,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05D4184BF4D73A89A1DC8D1B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VitaeTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		53BCC1CD86AEFBCD66271173 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VitaeUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		814A53EA6A479DA6C0067FAF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vitae/Pods-Vitae-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vitae/Pods-Vitae-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vitae/Pods-Vitae-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C053B46719FFD8AC91ED2DE2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Vitae-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		22E627C223DCB0C900BE5818 /* Sources */ = {
@@ -480,6 +611,7 @@
 		};
 		22E627F123DCB0CA00BE5818 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1FF27BCBFBAAB79E4D7832B /* Pods-Vitae.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -501,6 +633,7 @@
 		};
 		22E627F223DCB0CA00BE5818 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CAA910D844D6009DE94391B /* Pods-Vitae.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -522,6 +655,7 @@
 		};
 		22E627F423DCB0CA00BE5818 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF2E8621384BB801F40ADB1C /* Pods-VitaeTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -544,6 +678,7 @@
 		};
 		22E627F523DCB0CA00BE5818 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C48187D338DFC1A0138FBB05 /* Pods-VitaeTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -566,6 +701,7 @@
 		};
 		22E627F723DCB0CA00BE5818 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 201487ECB12183571E35F493 /* Pods-VitaeUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -586,6 +722,7 @@
 		};
 		22E627F823DCB0CA00BE5818 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE1A856A2EA71DD702B6CEB0 /* Pods-VitaeUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

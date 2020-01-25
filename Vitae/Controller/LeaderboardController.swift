@@ -30,6 +30,28 @@ class LeaderboardController: UITableViewController {
         view.backgroundColor = .white
         
         tableView.register(LeaderboardCell.self, forCellReuseIdentifier: cellId)
+        setupGestures()
+    }
+    
+    func setupGestures() {
+        let leftRecognizer = UISwipeGestureRecognizer(target: self, action:
+        #selector(swipeMade(_:)))
+           leftRecognizer.direction = .left
+        let rightRecognizer = UISwipeGestureRecognizer(target: self, action:
+        #selector(swipeMade(_:)))
+           rightRecognizer.direction = .right
+           self.view.addGestureRecognizer(leftRecognizer)
+           self.view.addGestureRecognizer(rightRecognizer)
+    }
+    
+    @objc func swipeMade(_ sender: UISwipeGestureRecognizer) {
+        if sender.direction == .left {
+            self.tabBarController?.selectedIndex = 1
+        }
+        
+        if sender.direction == .right {
+            self.tabBarController?.selectedIndex = 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

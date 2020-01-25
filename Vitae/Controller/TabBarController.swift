@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SwipeableTabBarController
+
 class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         let leaderboardController = LeaderboardController()
         leaderboardController.tabBarItem = UITabBarItem.init(tabBarSystemItem: UITabBarItem.SystemItem.featured, tag: 100)
         leaderboardController.tabBarItem.title = "Leaderboard"
@@ -20,7 +22,7 @@ class TabBarController: UITabBarController {
         dashboardController.tabBarItem = UITabBarItem.init(tabBarSystemItem: UITabBarItem.SystemItem.search, tag: 200)
         dashboardController.tabBarItem.title = "Camera"
         
-        let profileController = LeaderboardController()
+        let profileController = UIViewController()
         profileController.tabBarItem = UITabBarItem.init(tabBarSystemItem: UITabBarItem.SystemItem.contacts, tag: 300)
         profileController.tabBarItem.title = "Profile"
         
