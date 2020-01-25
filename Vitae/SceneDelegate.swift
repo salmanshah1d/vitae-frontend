@@ -13,22 +13,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
-
-        // Use a UIHostingController as window root view controller.
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
-            self.window = window
-            window.makeKeyAndVisible()
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+                
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
         }
+        window?.makeKeyAndVisible()
+        
+        let nav = UINavigationController(rootViewController: TabBarController())
+        
+        if #available(iOS 13.0, *) {
+            let navBarAppearance = UINavigationBarAppearance()
+            navBarAppearance.configureWithOpaqueBackground()
+            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+            navBarAppearance.backgroundColor = UIColor(hexString: "#0c2461")
+            nav.navigationBar.tintColor = .white
+            nav.navigationBar.standardAppearance = navBarAppearance
+            nav.navigationBar.scrollEdgeAppearance = navBarAppearance
+        }
+
+        nav.navigationBar.prefersLargeTitles = true
+        nav.navigationItem.largeTitleDisplayMode = .never
+        nav.navigationBar.largeContentTitle = "Hello"
+        
+        window?.rootViewController = nav
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

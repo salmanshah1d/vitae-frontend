@@ -1,0 +1,54 @@
+//
+//  LeaderboardController.swift
+//  Vitae
+//
+//  Created by Salman Shahid on 25/1/2020.
+//  Copyright © 2020 AVS. All rights reserved.
+//
+
+import UIKit
+
+class LeaderboardController: UITableViewController {
+    
+    let cellId = "cellId"
+    let userArray: [User] = {
+        let userDict = NSDictionary(dictionary: ["name":"Salman", "bio":"hey", "photo":"salman", "score":0])
+        let userOne = User(userDict: userDict, userId: "00000")
+        let userTwo = User(userDict: userDict, userId: "00000")
+        let userThree = User(userDict: userDict, userId: "00000")
+        let userFour = User(userDict: userDict, userId: "00000")
+        return [userOne, userTwo, userThree, userFour]
+    }()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.navigationItem.title = "Leaderboard 🏆"
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        
+        tableView.register(LeaderboardCell.self, forCellReuseIdentifier: cellId)
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+        
+        guard let leaderboardCell = cell as? LeaderboardCell else {
+            return cell
+        }
+        
+        leaderboardCell.user = userArray[indexPath.row]
+        
+        return leaderboardCell
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userArray.count
+    }
+}
