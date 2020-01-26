@@ -13,21 +13,20 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
         let leaderboardController = LeaderboardController()
-        leaderboardController.tabBarItem = UITabBarItem.init(tabBarSystemItem: UITabBarItem.SystemItem.featured, tag: 100)
-        leaderboardController.tabBarItem.title = "Leaderboard"
+        leaderboardController.tabBarItem = UITabBarItem(title: "Leaderboard", image: UIImage(named: "wreath"), tag: 100)
         
         let dashboardController = CameraController()
-        dashboardController.tabBarItem = UITabBarItem.init(tabBarSystemItem: UITabBarItem.SystemItem.search, tag: 200)
-        dashboardController.tabBarItem.title = "Camera"
+        dashboardController.tabBarItem = UITabBarItem(title: "Camera", image: UIImage(named: "camera"), tag: 200)
         
         let profileController = UIViewController()
-        profileController.tabBarItem = UITabBarItem.init(tabBarSystemItem: UITabBarItem.SystemItem.contacts, tag: 300)
-        profileController.tabBarItem.title = "Profile"
+        profileController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 300)
         
         viewControllers = [leaderboardController, dashboardController, profileController]
         selectedIndex = 1
+        
+        
     }
     
 }
