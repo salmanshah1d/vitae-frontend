@@ -16,7 +16,7 @@ class LeaderboardController: UITableViewController {
     }
     
     let cellId = "cellId"
-    let userArray: [User] = []
+    var userArray: [User] = []
     let db = Firestore.firestore()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,12 +34,12 @@ class LeaderboardController: UITableViewController {
     }
     
     func loadUsers() {
-        db.collection("cities").getDocuments() { (querySnapshot, err) in
+        db.collection("users").getDocuments() { (querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents: \(err)")
                 } else {
                     for document in querySnapshot!.documents {
-                        print("\(document.documentID) => \(document.data())")
+                        self.userArray.append(User(userDict: document.data(), userId: document.documentID))
                     }
                 }
         }

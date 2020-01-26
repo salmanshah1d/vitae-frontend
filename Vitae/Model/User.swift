@@ -16,7 +16,7 @@ class User:NSObject {
     var photo: String
     var score: Int
     
-    init(userDict: NSDictionary, userId: String) {
+    init(userDict: [String:Any], userId: String) {
         self.userId = userId
         self.name = userDict["name"] as? String ?? ""
         self.bio = userDict["bio"] as? String ?? ""

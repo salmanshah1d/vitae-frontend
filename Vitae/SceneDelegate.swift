@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window?.makeKeyAndVisible()
         
-        let user = User(userDict: NSDictionary(dictionary: ["name":"Salman", "bio":"hey", "photo":"salman", "score":0]), userId: "012345")
+        let user = User(userDict: ["name":"Salman", "bio":"hey", "photo":"salman", "score":0], userId: "012345")
         
         let nav = UINavigationController(rootViewController: TabBarController(user: user))
         
