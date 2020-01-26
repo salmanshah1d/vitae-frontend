@@ -75,7 +75,7 @@ class EntityInfoController: UIViewController {
         
         photo.topAnchor.constraint(equalTo: latinName.bottomAnchor, constant: margin).isActive = true
         photo.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        photo.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        photo.widthAnchor.constraint(equalToConstant: 400).isActive = true
         
         infoText.topAnchor.constraint(equalTo: photo.bottomAnchor).isActive = true
         infoText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
