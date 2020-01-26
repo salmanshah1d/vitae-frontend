@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		15A0B9A085D2D3DAEF782E93 /* Pods_VitaeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E3ED94407FECB428508B345 /* Pods_VitaeTests.framework */; };
 		2201DD2723DCD592007C4E7B /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201DD2623DCD592007C4E7B /* CameraController.swift */; };
-		22B4810A23DD1661005AA375 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22B4810923DD1660005AA375 /* GoogleService-Info.plist */; };
-		22B4810B23DD1661005AA375 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22B4810923DD1660005AA375 /* GoogleService-Info.plist */; };
-		22B4810C23DD1661005AA375 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22B4810923DD1660005AA375 /* GoogleService-Info.plist */; };
+		22981CD423DD266500E54CC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22981CD323DD266500E54CC8 /* GoogleService-Info.plist */; };
+		22981CD523DD266500E54CC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22981CD323DD266500E54CC8 /* GoogleService-Info.plist */; };
+		22981CD623DD266500E54CC8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 22981CD323DD266500E54CC8 /* GoogleService-Info.plist */; };
 		22E627CA23DCB0C900BE5818 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E627C923DCB0C900BE5818 /* AppDelegate.swift */; };
 		22E627CC23DCB0C900BE5818 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E627CB23DCB0C900BE5818 /* SceneDelegate.swift */; };
 		22E627D023DCB0C900BE5818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E627CF23DCB0C900BE5818 /* Assets.xcassets */; };
@@ -19,7 +19,7 @@
 		22E627D623DCB0C900BE5818 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E627D423DCB0C900BE5818 /* LaunchScreen.storyboard */; };
 		22E627E123DCB0CA00BE5818 /* VitaeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E627E023DCB0CA00BE5818 /* VitaeTests.swift */; };
 		22E627EC23DCB0CA00BE5818 /* VitaeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E627EB23DCB0CA00BE5818 /* VitaeUITests.swift */; };
-		22E6283623DCC0C400BE5818 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6283523DCC0C400BE5818 /* UIViewExtension.swift */; };
+		22E6283623DCC0C400BE5818 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6283523DCC0C400BE5818 /* Extensions.swift */; };
 		22E6283823DCC1A500BE5818 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6283723DCC1A500BE5818 /* TabBarController.swift */; };
 		22E6283A23DCC26800BE5818 /* LeaderboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6283923DCC26800BE5818 /* LeaderboardController.swift */; };
 		22E6283C23DCC61200BE5818 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6283B23DCC61200BE5818 /* Shared.swift */; };
@@ -50,7 +50,7 @@
 		112D90823B13A94D91FBC951 /* Pods_Vitae.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vitae.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		201487ECB12183571E35F493 /* Pods-VitaeUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitaeUITests.debug.xcconfig"; path = "Target Support Files/Pods-VitaeUITests/Pods-VitaeUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		2201DD2623DCD592007C4E7B /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
-		22B4810923DD1660005AA375 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/untitled folder/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		22981CD323DD266500E54CC8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/untitled folder/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		22E627C623DCB0C900BE5818 /* Vitae.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vitae.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E627C923DCB0C900BE5818 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E627CB23DCB0C900BE5818 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +64,7 @@
 		22E627E723DCB0CA00BE5818 /* VitaeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VitaeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E627EB23DCB0CA00BE5818 /* VitaeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaeUITests.swift; sourceTree = "<group>"; };
 		22E627ED23DCB0CA00BE5818 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22E6283523DCC0C400BE5818 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		22E6283523DCC0C400BE5818 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		22E6283723DCC1A500BE5818 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		22E6283923DCC26800BE5818 /* LeaderboardController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardController.swift; sourceTree = "<group>"; };
 		22E6283B23DCC61200BE5818 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 		22E627C823DCB0C900BE5818 /* Vitae */ = {
 			isa = PBXGroup;
 			children = (
-				22B4810923DD1660005AA375 /* GoogleService-Info.plist */,
+				22981CD323DD266500E54CC8 /* GoogleService-Info.plist */,
 				22E627C923DCB0C900BE5818 /* AppDelegate.swift */,
 				22E627CB23DCB0C900BE5818 /* SceneDelegate.swift */,
 				22E6284323DCC75100BE5818 /* Controller */,
@@ -142,7 +142,7 @@
 				22E627D423DCB0C900BE5818 /* LaunchScreen.storyboard */,
 				22E627D723DCB0C900BE5818 /* Info.plist */,
 				22E627D123DCB0C900BE5818 /* Preview Content */,
-				22E6283523DCC0C400BE5818 /* UIViewExtension.swift */,
+				22E6283523DCC0C400BE5818 /* Extensions.swift */,
 			);
 			path = Vitae;
 			sourceTree = "<group>";
@@ -332,7 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22E627D623DCB0C900BE5818 /* LaunchScreen.storyboard in Resources */,
-				22B4810A23DD1661005AA375 /* GoogleService-Info.plist in Resources */,
+				22981CD423DD266500E54CC8 /* GoogleService-Info.plist in Resources */,
 				22E627D323DCB0C900BE5818 /* Preview Assets.xcassets in Resources */,
 				22E627D023DCB0C900BE5818 /* Assets.xcassets in Resources */,
 			);
@@ -342,7 +342,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B4810B23DD1661005AA375 /* GoogleService-Info.plist in Resources */,
+				22981CD523DD266500E54CC8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +350,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22B4810C23DD1661005AA375 /* GoogleService-Info.plist in Resources */,
+				22981CD623DD266500E54CC8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +454,7 @@
 				22E627CA23DCB0C900BE5818 /* AppDelegate.swift in Sources */,
 				22E6283823DCC1A500BE5818 /* TabBarController.swift in Sources */,
 				22E627CC23DCB0C900BE5818 /* SceneDelegate.swift in Sources */,
-				22E6283623DCC0C400BE5818 /* UIViewExtension.swift in Sources */,
+				22E6283623DCC0C400BE5818 /* Extensions.swift in Sources */,
 				22E6283E23DCC72B00BE5818 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

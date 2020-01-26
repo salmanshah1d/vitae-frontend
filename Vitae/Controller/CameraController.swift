@@ -196,7 +196,8 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @objc func uploadPhoto() {
-        let imageData = imageView.image?.pngData()
+        guard let image = imageView.image else { return }
+        let imageData = image.pngData()
         let imageName = UUID().uuidString
         let childRef = "\(imageName).png"
         let storageRef = Storage.storage().reference().child(childRef)

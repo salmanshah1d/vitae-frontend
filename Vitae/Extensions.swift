@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    
     convenience init(hexString: String, alpha: CGFloat = 1.0) {
         let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         let scanner = Scanner(string: hexString)
@@ -40,4 +39,3 @@ extension UIColor {
         return String(format:"#%06x", rgb)
     }
 }
-

@@ -34,7 +34,15 @@ class LeaderboardController: UITableViewController {
     }
     
     func loadUsers() {
-//        db.
+        db.collection("cities").getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        print("\(document.documentID) => \(document.data())")
+                    }
+                }
+        }
     }
     
     func setupGestures() {
