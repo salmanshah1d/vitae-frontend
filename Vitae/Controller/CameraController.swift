@@ -262,8 +262,13 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocat
                                         let species = Species(userDict: speciesDict)
                                         vc.species = species
                                         self.navigationController?.present(vc, animated: true, completion: nil)
+                                        self.imageView.isHidden = true
+                                        self.captureButton.isHidden = false
+                                        self.dropButton.isHidden = true
+                                        self.uploadButton.isHidden = true
                                     }
                                 }
+                                print(speciesDict)
                             }
                         } catch let error as NSError {
                             print(error.localizedDescription)
@@ -273,11 +278,10 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocat
                 }
             }
         }
-        
-        imageView.isHidden = true
-        captureButton.isHidden = false
-        dropButton.isHidden = true
-        uploadButton.isHidden = true
+        self.imageView.isHidden = true
+        self.captureButton.isHidden = false
+        self.dropButton.isHidden = true
+        self.uploadButton.isHidden = true
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

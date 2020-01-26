@@ -21,6 +21,6 @@ class Species:NSObject {
         self.latinName = userDict["latin_name"] as? String ?? ""
         self.bio = userDict["summary"] as? String ?? ""
         self.photo = userDict["wiki_image"] as? String ?? ""
-        self.invasive = userDict["invasive"] as? Bool ?? false
+        self.invasive = userDict["is_invasive"] as? Bool ?? false
     }
 }

@@ -49,7 +49,7 @@ class EntityInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hexString: "#d1d8e0", alpha: 0.8)
+        view.backgroundColor = UIColor.white
         setupViews()
     }
     
@@ -78,12 +78,12 @@ class EntityInfoController: UIViewController {
     }()
 
     let photo: UIImageView = {
-       let uv = UIImageView()
-       uv.clipsToBounds = true
-       uv.contentMode = .scaleAspectFill
-       uv.backgroundColor = UIColor(hexString: "#d1d8e0")
-       uv.translatesAutoresizingMaskIntoConstraints = false
-       return uv
+        let uv = UIImageView()
+        uv.clipsToBounds = true
+        uv.layer.masksToBounds = true
+        uv.contentMode = .scaleAspectFit
+        uv.translatesAutoresizingMaskIntoConstraints = false
+        return uv
     }()
     
     func setupViews() {
@@ -96,17 +96,17 @@ class EntityInfoController: UIViewController {
         
         englishName.topAnchor.constraint(equalTo: view.topAnchor, constant: margin).isActive = true
         englishName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
+        
         latinName.topAnchor.constraint(equalTo: englishName.bottomAnchor, constant: margin).isActive = true
         latinName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
         
         photo.topAnchor.constraint(equalTo: latinName.bottomAnchor, constant: margin).isActive = true
-        photo.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        photo.widthAnchor.constraint(equalToConstant: 400).isActive = true
+        photo.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        photo.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
         infoText.topAnchor.constraint(equalTo: photo.bottomAnchor).isActive = true
-        infoText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
-        infoText.rightAnchor.constraint(equalTo: view.rightAnchor, constant: margin).isActive = true
+        infoText.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        infoText.widthAnchor.constraint(equalToConstant: 300).isActive = true
         infoText.numberOfLines = 0
-        
     }
 }
