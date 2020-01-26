@@ -62,6 +62,9 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocat
         catch let error  {
             print("Error Unable to initialize back camera:  \(error.localizedDescription)")
         }
+        
+        // add transparent info text overlay
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
