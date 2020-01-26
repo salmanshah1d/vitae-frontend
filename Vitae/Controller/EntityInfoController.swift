@@ -13,6 +13,10 @@ import FirebaseStorage
 import FirebaseUI
 
 class EntityInfoController: UIViewController {
+    public var screenWidth: CGFloat {
+        return view.safeAreaLayoutGuide.layoutFrame.size.width
+    }
+    
     var user: User? {
         didSet {
             guard let user = user else {
@@ -76,20 +80,35 @@ class EntityInfoController: UIViewController {
         ul.font = UIFont.systemFont(ofSize: 16)
         return ul
     }()
-
+    
     let photo: UIImageView = {
         let uv = UIImageView()
         uv.clipsToBounds = true
-        uv.contentMode = .scaleAspectFit
+        uv.contentMode = .scaleAspectFill
         uv.translatesAutoresizingMaskIntoConstraints = false
+        
         return uv
     }()
     
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
     func setupViews() {
-        view.addSubview(englishName)
-        view.addSubview(latinName)
-        view.addSubview(photo)
-        view.addSubview(infoText)
+        view.addSubview(scrollView)
+        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        // this is important for scrolling
+        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        
+        scrollView.addSubview(englishName)
+        scrollView.addSubview(latinName)
+        scrollView.addSubview(photo)
+        scrollView.addSubview(infoText)
         
         let margin = CGFloat(20)
         
@@ -100,12 +119,18 @@ class EntityInfoController: UIViewController {
         latinName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
         
         photo.topAnchor.constraint(equalTo: latinName.bottomAnchor, constant: margin).isActive = true
-        photo.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        photo.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        photo.widthAnchor.constraint(equalToConstant: screenWidth * 0.8).isActive = true
+        photo.heightAnchor.constraint(equalToConstant: screenWidth * 0.8).isActive = true
+        photo.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        photo.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//        photo.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        photo.layer.cornerRadius = (screenWidth * 0.8) * 0.5
         
-        infoText.topAnchor.constraint(equalTo: photo.bottomAnchor).isActive = true
+        
+        
+        infoText.topAnchor.constraint(equalTo: photo.bottomAnchor, constant: margin).isActive = true
         infoText.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        infoText.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        infoText.widthAnchor.constraint(equalToConstant: 340).isActive = true
         infoText.numberOfLines = 0
     }
 }
