@@ -12,7 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseUI
 
-class EntityInfoController: UIViewController {
+class EntityInfoController: UIViewController, UIScrollViewDelegate {
     public var screenWidth: CGFloat {
         return view.safeAreaLayoutGuide.layoutFrame.size.width
     }
@@ -92,23 +92,18 @@ class EntityInfoController: UIViewController {
     
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
     
     func setupViews() {
         view.addSubview(scrollView)
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        // this is important for scrolling
-        scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
+        scrollView.frame = view.frame
         scrollView.addSubview(englishName)
         scrollView.addSubview(latinName)
         scrollView.addSubview(photo)
         scrollView.addSubview(infoText)
+        scrollView.bounces = true
+        scrollView.isScrollEnabled = true
         
         let margin = CGFloat(20)
         
