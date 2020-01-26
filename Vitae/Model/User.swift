@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import FirebaseFirestore
+
 class User:NSObject {
     var userId: String
     var name: String
@@ -19,6 +21,21 @@ class User:NSObject {
         self.name = userDict["name"] as? String ?? ""
         self.bio = userDict["bio"] as? String ?? ""
         self.photo = userDict["photo"] as? String ?? ""
-        self.score = userDict["score"] as? Int  ?? 0
+        self.score = userDict["score"] as? Int ?? 0
+    }
+    
+    func incrementScore(amount: Int) {
+        self.score += amount
+    
+        let db = Firestore.firestore()
+        db.collection("users").document(userId).setData([
+            "score": self.score
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
     }
 }

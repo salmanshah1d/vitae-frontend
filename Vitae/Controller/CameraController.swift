@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import FirebaseStorage
 
 class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     
@@ -51,7 +52,6 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         navigationController?.navigationBar.isHidden = false
         tabBarController?.tabBar.isHidden = false
         self.captureSession.stopRunning()
-        self.videoPreviewLayer.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,7 +69,6 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
             guard let self = self else { return }
             self.captureSession.startRunning()
             DispatchQueue.main.async {
-                self.videoPreviewLayer.isHidden = false
                 self.videoPreviewLayer.frame = self.cameraView.bounds
             }
         }
@@ -84,6 +83,9 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     func setupViews() {
         view.addSubview(cameraView)
         view.addSubview(imageView)
+        view.addSubview(captureButton)
+        view.addSubview(dropButton)
+        view.addSubview(uploadButton)
         
         cameraView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         cameraView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
@@ -95,6 +97,27 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         imageView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         imageView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         imageView.isHidden = true
+        
+        let buttonSize = CGFloat(80)
+        captureButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -buttonSize).isActive = true
+        captureButton.widthAnchor.constraint(equalToConstant: buttonSize).isActive = true
+        captureButton.heightAnchor.constraint(equalToConstant: buttonSize).isActive = true
+        captureButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        captureButton.layer.cornerRadius = buttonSize/2
+        
+        dropButton.isHidden = true
+        dropButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -buttonSize).isActive = true
+        dropButton.widthAnchor.constraint(equalToConstant: buttonSize).isActive = true
+        dropButton.heightAnchor.constraint(equalToConstant: buttonSize).isActive = true
+        dropButton.rightAnchor.constraint(equalTo: captureButton.leftAnchor).isActive = true
+        dropButton.layer.cornerRadius = buttonSize/2
+        
+        uploadButton.isHidden = true
+        uploadButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -buttonSize).isActive = true
+        uploadButton.widthAnchor.constraint(equalToConstant: buttonSize).isActive = true
+        uploadButton.heightAnchor.constraint(equalToConstant: buttonSize).isActive = true
+        uploadButton.leftAnchor.constraint(equalTo: captureButton.rightAnchor).isActive = true
+        uploadButton.layer.cornerRadius = buttonSize/2
     }
     
     func setupGestures() {
@@ -120,6 +143,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     let imageView:UIImageView = {
         let uv = UIImageView()
+        uv.contentMode = .scaleAspectFill
         uv.translatesAutoresizingMaskIntoConstraints = false
         return uv
     }()
@@ -133,15 +157,58 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
 
     let captureButton:UIButton = {
         let btn = UIButton()
+        btn.backgroundColor = .systemBlue
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(capturePhoto), for: .touchUpInside)
+        return btn
+    }()
+    
+    let dropButton:UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .systemBlue
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(dropPhoto), for: .touchUpInside)
+        return btn
+    }()
+    
+    let uploadButton:UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .systemBlue
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.addTarget(self, action: #selector(uploadPhoto), for: .touchUpInside)
         return btn
     }()
     
     @objc func capturePhoto() {
         let settings = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         stillImageOutput.capturePhoto(with: settings, delegate: self)
-        imageView.isHidden = false
+    }
+    
+    @objc func dropPhoto() {
+        imageView.isHidden = true
+        captureButton.isHidden = false
+        dropButton.isHidden = true
+        uploadButton.isHidden = true
+    }
+    
+    @objc func uploadPhoto() {
+        let imageData = imageView.image?.pngData()
+        let imageName = UUID().uuidString
+        let childRef = "\(imageName).png"
+        let storageRef = Storage.storage().reference().child(childRef)
+        if let uploadData = imageData {
+            storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                }
+            }
+        }
+        
+        imageView.isHidden = true
+        captureButton.isHidden = false
+        dropButton.isHidden = true
+        uploadButton.isHidden = true
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -161,5 +228,10 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         let image = UIImage(data: imageData)
         imageView.image = image
+        
+        imageView.isHidden = false
+        captureButton.isHidden = true
+        dropButton.isHidden = false
+        uploadButton.isHidden = false
     }
 }

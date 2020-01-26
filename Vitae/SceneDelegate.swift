@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftUI
+import FirebaseFirestore
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -27,7 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window?.makeKeyAndVisible()
         
-        let nav = UINavigationController(rootViewController: TabBarController())
+        let user = User(userDict: NSDictionary(dictionary: ["name":"Salman", "bio":"hey", "photo":"salman", "score":0]), userId: "012345")
+        
+        let nav = UINavigationController(rootViewController: TabBarController(user: user))
         
         if #available(iOS 13.0, *) {
             let navBarAppearance = UINavigationBarAppearance()

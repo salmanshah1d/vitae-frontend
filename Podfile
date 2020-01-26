@@ -6,7 +6,8 @@ target 'Vitae' do
   use_frameworks!
 
   # Pods for Vitae
-  pod 'SwipeableTabBarController'
+  pod 'Firebase/Storage'
+  pod 'Firebase/Firestore'
 
   target 'VitaeTests' do
     inherit! :search_paths

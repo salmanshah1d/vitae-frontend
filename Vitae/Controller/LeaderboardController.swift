@@ -7,18 +7,13 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class LeaderboardController: UITableViewController {
     
     let cellId = "cellId"
-    let userArray: [User] = {
-        let userDict = NSDictionary(dictionary: ["name":"Salman", "bio":"hey", "photo":"salman", "score":0])
-        let userOne = User(userDict: userDict, userId: "00000")
-        let userTwo = User(userDict: userDict, userId: "00000")
-        let userThree = User(userDict: userDict, userId: "00000")
-        let userFour = User(userDict: userDict, userId: "00000")
-        return [userOne, userTwo, userThree, userFour]
-    }()
+    let userArray: [User] = []
+    let db = Firestore.firestore()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -31,6 +26,10 @@ class LeaderboardController: UITableViewController {
         
         tableView.register(LeaderboardCell.self, forCellReuseIdentifier: cellId)
         setupGestures()
+    }
+    
+    func loadUsers() {
+//        db.
     }
     
     func setupGestures() {
@@ -65,12 +64,16 @@ class LeaderboardController: UITableViewController {
             return cell
         }
         
-        leaderboardCell.user = userArray[indexPath.row]
+        leaderboardCell.user = userArray[indexPath.item]
         
         return leaderboardCell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return userArray.count
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(userArray[indexPath.item].name)
     }
 }
