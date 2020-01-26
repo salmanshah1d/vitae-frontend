@@ -54,6 +54,7 @@ class LeaderboardCell:UITableViewCell {
         addSubview(photo)
         addSubview(name)
         addSubview(score)
+        selectionStyle = .none
         
         let margin = CGFloat(20)
         let imageSize = size - margin
@@ -68,6 +69,5 @@ class LeaderboardCell:UITableViewCell {
         
         score.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         score.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
-        
     }
 }

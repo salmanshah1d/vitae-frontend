@@ -30,19 +30,22 @@ class LeaderboardController: UITableViewController {
         view.backgroundColor = .white
         
         tableView.register(LeaderboardCell.self, forCellReuseIdentifier: cellId)
+        tableView.separatorColor = .clear
+        
         setupGestures()
     }
     
     func loadUsers() {
+        self.userArray = []
         db.collection("users").getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    for document in querySnapshot!.documents {
-                        self.userArray.append(User(userDict: document.data(), userId: document.documentID))
-                    }
-                    self.tableView.reloadData()
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    self.userArray.append(User(userDict: document.data(), userId: document.documentID))
                 }
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -61,10 +64,6 @@ class LeaderboardController: UITableViewController {
         if sender.direction == .left {
             self.tabBarController?.selectedIndex = 1
         }
-        
-        if sender.direction == .right {
-            self.tabBarController?.selectedIndex = 0
-        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -79,6 +78,12 @@ class LeaderboardController: UITableViewController {
         }
         
         leaderboardCell.user = userArray[indexPath.item]
+        if (indexPath.item % 2 == 1) {
+            leaderboardCell.backgroundColor = UIColor(hexString: "#a5b1c2").withAlphaComponent(0.1)
+//            leaderboardCell.backgroundColor = UIColor(hexString: "#fafafa")
+        } else {
+            leaderboardCell.backgroundColor = UIColor.white
+        }
         
         return leaderboardCell
     }
@@ -89,5 +94,6 @@ class LeaderboardController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(userArray[indexPath.item].name)
+        navigationController?.present(MapController(), animated: true, completion: nil)
     }
 }

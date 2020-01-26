@@ -9,8 +9,9 @@
 import UIKit
 import AVFoundation
 import FirebaseStorage
+import CoreLocation
 
-class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
+class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocationManagerDelegate {
     // Change status bar color to light
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -19,6 +20,18 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
+    var currentPhoto: Data?
+    let locationManager = CLLocationManager()
+    let user: User
+    
+    init(user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -69,17 +82,25 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         videoPreviewLayer.connection?.videoOrientation = .portrait
         cameraView.layer.addSublayer(videoPreviewLayer)
         
-        self.captureSession.startRunning()
-        self.videoPreviewLayer.frame = self.cameraView.bounds
-
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            self.captureSession.startRunning()
+            DispatchQueue.main.async {
+                self.videoPreviewLayer.frame = self.cameraView.bounds
+            }
+        }
         
-//        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-//            guard let self = self else { return }
-//            self.captureSession.startRunning()
-//            DispatchQueue.main.async {
-//                self.videoPreviewLayer.frame = self.cameraView.bounds
-//            }
-//        }
+        // Ask for Authorisation from the User.
+        locationManager.requestAlwaysAuthorization()
+
+        // For use in foreground
+        locationManager.requestWhenInUseAuthorization()
+
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
 
     override func viewDidLoad() {
@@ -164,8 +185,10 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     }()
 
     let captureButton:UIButton = {
-        let btn = UIButton()
-        btn.backgroundColor = .systemBlue
+        let btn = UIButton(type: UIButton.ButtonType.custom)
+        btn.backgroundColor = UIColor(hexString: "#fa8231")
+        btn.setImage(UIImage(named: "camera_filled"), for: UIControl.State.normal)
+        btn.imageView?.contentMode = .center
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(capturePhoto), for: .touchUpInside)
         return btn
@@ -173,7 +196,9 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     let dropButton:UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .systemBlue
+        btn.backgroundColor = UIColor(hexString: "#fa8231")
+        btn.setImage(UIImage(named: "cross"), for: UIControl.State.normal)
+        btn.imageView?.contentMode = .center
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(dropPhoto), for: .touchUpInside)
         return btn
@@ -181,7 +206,9 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     let uploadButton:UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = .systemBlue
+        btn.backgroundColor = UIColor(hexString: "#fa8231")
+        btn.setImage(UIImage(named: "check"), for: UIControl.State.normal)
+        btn.imageView?.contentMode = .center
         btn.translatesAutoresizingMaskIntoConstraints = false
         btn.addTarget(self, action: #selector(uploadPhoto), for: .touchUpInside)
         return btn
@@ -200,16 +227,38 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @objc func uploadPhoto() {
-        guard let image = imageView.image else { return }
-        let imageData = image.pngData()
         let imageName = UUID().uuidString
         let childRef = "\(imageName).png"
         let storageRef = Storage.storage().reference().child(childRef)
-        if let uploadData = imageData {
+        
+        if let uploadData = currentPhoto {
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 if error != nil {
                     print(error as Any)
                     return
+                } else {
+                    let lon = self.locationManager.location?.coordinate.longitude ?? 0
+                    let lat = self.locationManager.location?.coordinate.latitude ?? 0
+                    
+                    let requestUrl = URL(string: "http://192.168.2.46:8080/classify?fn=\(childRef)&uid=\(self.user.userId)&lat=\(lat)&lon=\(lon)")!
+                    // Create URL Request
+                    var request = URLRequest(url: requestUrl)
+                    // Specify HTTP Method to use
+                    request.httpMethod = "GET"
+                    // Send HTTP Request
+                    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                        // Check if Error took place
+                        if let error = error {
+                            print("Error took place \(error)")
+                            return
+                        }
+                
+                        // Convert HTTP Response Data to a simple String
+                        if let data = data, let dataString = String(data: data, encoding: .utf8) {
+                            print("Response data string:\n \(dataString)")
+                        }
+                    }
+                    task.resume()
                 }
             }
         }
@@ -222,7 +271,7 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
-
+        
         guard let image = info[.editedImage] as? UIImage else {
             print("No image found")
             return
@@ -235,6 +284,8 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         guard let imageData = photo.fileDataRepresentation()
             else { return }
         
+        currentPhoto = imageData
+        
         let image = UIImage(data: imageData)
         imageView.image = image
         
@@ -244,3 +295,4 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         uploadButton.isHidden = false
     }
 }
+

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, UITabBarControllerDelegate {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -27,19 +27,30 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        delegate = self
+        
         let leaderboardController = LeaderboardController()
         leaderboardController.tabBarItem = UITabBarItem(title: "Leaderboard", image: UIImage(named: "wreath"), tag: 100)
         
-        let dashboardController = CameraController()
+        let dashboardController = CameraController(user: user)
         dashboardController.tabBarItem = UITabBarItem(title: "Camera", image: UIImage(named: "camera"), tag: 200)
         
         let profileController = MapController()
         profileController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 300)
         
         viewControllers = [leaderboardController, dashboardController, profileController]
-        selectedIndex = 1
-        
-        
+        selectedIndex = 0
     }
     
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        guard let fromView = selectedViewController?.view, let toView = viewController.view else {
+            return false // Make sure you want this as false
+        }
+        
+        if fromView != toView {
+            UIView.transition(from: fromView, to: toView, duration: 0.5, options: [.transitionFlipFromLeft], completion: nil)
+        }
+        
+        return true
+    }
 }

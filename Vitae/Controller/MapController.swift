@@ -19,7 +19,7 @@ class MapController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.navigationItem.title = "My Captures 🗺️"
+        self.tabBarController?.navigationItem.title = "My Captures 🌍"
         
         let mapView = MKMapView()
         mapView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,8 +42,23 @@ class MapController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+        setupGestures()
     }
     
+    func setupGestures() {
+        let leftRecognizer = UISwipeGestureRecognizer(target: self, action:
+        #selector(swipeMade(_:)))
+           leftRecognizer.direction = .left
+        let rightRecognizer = UISwipeGestureRecognizer(target: self, action:
+        #selector(swipeMade(_:)))
+           rightRecognizer.direction = .right
+           self.view.addGestureRecognizer(leftRecognizer)
+           self.view.addGestureRecognizer(rightRecognizer)
+    }
     
+    @objc func swipeMade(_ sender: UISwipeGestureRecognizer) {
+        if sender.direction == .right {
+            self.tabBarController?.selectedIndex = 1
+        }
+    }
 }

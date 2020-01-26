@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         window?.makeKeyAndVisible()
         
-        let user = User(userDict: ["name":"Salman", "bio":"hey", "photo":"salman", "score":0], userId: "012345")
+        let user = User(userDict: ["name":"Salman", "bio":"#1 invasive species tracker this side of the Mississippi", "photo":"salman", "score":53], userId: "vpHULRUv8RuZUs8vgV0D")
         
         let nav = UINavigationController(rootViewController: TabBarController(user: user))
         
@@ -43,7 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
 
         nav.navigationBar.prefersLargeTitles = true
-        nav.navigationItem.largeTitleDisplayMode = .never
+        nav.navigationItem.largeTitleDisplayMode = .automatic
         nav.navigationBar.largeContentTitle = "Hello"
         
         window?.rootViewController = nav
