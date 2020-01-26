@@ -22,7 +22,7 @@
 		<key>FirebaseCore.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>4</integer>
 		</dict>
 		<key>FirebaseCoreDiagnostics.xcscheme</key>
 		<dict>
@@ -90,7 +90,7 @@
 			<key>isShown</key>
 			<false/>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<key>abseil.xcscheme</key>
 		<dict>
