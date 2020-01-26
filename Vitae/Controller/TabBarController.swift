@@ -36,7 +36,7 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
         dashboardController.tabBarItem = UITabBarItem(title: "Camera", image: UIImage(named: "camera"), tag: 200)
         
         let profileController = MapController(user: user)
-        profileController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 300)
+        profileController.tabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "map"), tag: 300)
         
         viewControllers = [leaderboardController, dashboardController, profileController]
         selectedIndex = 0
