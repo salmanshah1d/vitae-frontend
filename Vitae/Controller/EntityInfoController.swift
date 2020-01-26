@@ -49,7 +49,7 @@ class EntityInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hexString: "#d1d8e0", alpha: 0.6)
+        view.backgroundColor = UIColor(hexString: "#d1d8e0", alpha: 0.8)
         setupViews()
     }
     
@@ -101,10 +101,12 @@ class EntityInfoController: UIViewController {
         
         photo.topAnchor.constraint(equalTo: latinName.bottomAnchor, constant: margin).isActive = true
         photo.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        photo.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        photo.widthAnchor.constraint(equalToConstant: 400).isActive = true
         
         infoText.topAnchor.constraint(equalTo: photo.bottomAnchor).isActive = true
-        infoText.layoutMargins = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+        infoText.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
+        infoText.rightAnchor.constraint(equalTo: view.rightAnchor, constant: margin).isActive = true
+        infoText.numberOfLines = 0
         
     }
 }
