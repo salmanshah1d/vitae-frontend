@@ -22,7 +22,7 @@ class LeaderboardController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Leaderboard 🏆"
-        // UIColor(hexString: "#20bf6b")
+        loadUsers()
     }
     
     override func viewDidLoad() {
