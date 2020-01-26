@@ -27,7 +27,7 @@ class LeaderboardCell:UITableViewCell {
         let uv = UIImageView()
         uv.clipsToBounds = true
         uv.contentMode = .scaleAspectFill
-        uv.backgroundColor = UIColor(hexString: "#26de81")
+        uv.backgroundColor = UIColor(hexString: "#d1d8e0")
         uv.translatesAutoresizingMaskIntoConstraints = false
         return uv
     }()
