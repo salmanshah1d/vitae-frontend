@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import FirebaseFirestore
 
-class EntityController: UIViewController {
+class EntityInfoController: UIViewController {
     // Change status bar color to light
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
