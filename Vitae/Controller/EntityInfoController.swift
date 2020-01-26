@@ -80,7 +80,6 @@ class EntityInfoController: UIViewController {
     let photo: UIImageView = {
         let uv = UIImageView()
         uv.clipsToBounds = true
-        uv.layer.masksToBounds = true
         uv.contentMode = .scaleAspectFit
         uv.translatesAutoresizingMaskIntoConstraints = false
         return uv
