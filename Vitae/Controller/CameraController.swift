@@ -150,6 +150,21 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocat
         uploadButton.heightAnchor.constraint(equalToConstant: buttonSize).isActive = true
         uploadButton.leftAnchor.constraint(equalTo: captureButton.rightAnchor).isActive = true
         uploadButton.layer.cornerRadius = buttonSize/2
+        
+        blackScreen.addSubview(loader)
+        view.addSubview(blackScreen)
+        view.bringSubviewToFront(blackScreen)
+        
+        blackScreen.isHidden = true
+        blackScreen.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        blackScreen.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        blackScreen.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        blackScreen.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        loader.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        loader.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
+        loader.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        loader.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     func setupGestures() {
@@ -179,7 +194,14 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocat
         uv.translatesAutoresizingMaskIntoConstraints = false
         return uv
     }()
-
+    
+    let blackScreen:UIView = {
+        let uv = UIView()
+        uv.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        uv.translatesAutoresizingMaskIntoConstraints = false
+        return uv
+    }()
+    
     let cameraView:UIView = {
         let uv = UIView()
         uv.backgroundColor = .white
@@ -229,15 +251,36 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocat
         uploadButton.isHidden = true
     }
     
+    let loader:UIActivityIndicatorView = {
+        let uv = UIActivityIndicatorView()
+        uv.color = .white
+        uv.translatesAutoresizingMaskIntoConstraints = false
+        return uv
+    }()
+    
+    func startLoading() {
+        blackScreen.isHidden = false
+        loader.startAnimating()
+        loader.isHidden = false
+    }
+    
+    func stopLoading() {
+        blackScreen.isHidden = true
+        loader.stopAnimating()
+        loader.isHidden = true
+    }
+    
     @objc func uploadPhoto() {
         let imageName = UUID().uuidString
         let childRef = "\(imageName).png"
         let storageRef = Storage.storage().reference().child(childRef)
         
         if let uploadData = currentPhoto {
+            startLoading()
             storageRef.putData(uploadData, metadata: nil) { (metadata, error) in
                 if error != nil {
                     print(error as Any)
+                    self.stopLoading()
                     return
                 } else {
                     let lon = self.locationManager.location?.coordinate.longitude ?? 0
@@ -259,19 +302,27 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocat
                         // Convert HTTP Response Data to a simple String
                         do {
                             if let speciesDict = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any] {
+                                DispatchQueue.main.async {
+                                    self.stopLoading()
+                                    self.imageView.isHidden = true
+                                    self.captureButton.isHidden = false
+                                    self.dropButton.isHidden = true
+                                    self.uploadButton.isHidden = true
+                                }
                                 if speciesDict["error"] == nil {
                                     DispatchQueue.main.async {
                                         let vc = EntityInfoController()
                                         let species = Species(userDict: speciesDict)
                                         vc.species = species
                                         self.navigationController?.present(vc, animated: true, completion: nil)
-                                        self.imageView.isHidden = true
-                                        self.captureButton.isHidden = false
-                                        self.dropButton.isHidden = true
-                                        self.uploadButton.isHidden = true
+                                    }
+                                } else {
+                                    DispatchQueue.main.async {
+                                        let alertController = UIAlertController(title: "Alert", message: speciesDict["error"] as? String, preferredStyle: .alert)
+                                        alertController.addAction(UIAlertAction(title: "Cool!", style: UIAlertAction.Style.default, handler: nil))
+                                        self.present(alertController, animated: true, completion: nil)
                                     }
                                 }
-                                print(speciesDict)
                             }
                         } catch let error as NSError {
                             print(error.localizedDescription)
@@ -281,10 +332,6 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocat
                 }
             }
         }
-        self.imageView.isHidden = true
-        self.captureButton.isHidden = false
-        self.dropButton.isHidden = true
-        self.uploadButton.isHidden = true
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

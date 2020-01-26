@@ -34,7 +34,11 @@ class EntityInfoController: UIViewController, UIScrollViewDelegate {
             guard let species = species else {
                 return
             }
-            englishName.text = species.name
+            var invasive = ""
+            if species.invasive {
+                invasive = " (Invasive)"
+            }
+            englishName.text = species.name + invasive
             let url = URL(string: species.photo)
             photo.sd_setImage(with: url, completed: nil)
             latinName.text = species.latinName
