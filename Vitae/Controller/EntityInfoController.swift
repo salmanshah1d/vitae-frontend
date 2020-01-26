@@ -12,7 +12,7 @@ import FirebaseFirestore
 import FirebaseStorage
 import FirebaseUI
 
-class EntityInfoController: UIViewController {
+class EntityInfoController: UIViewController, UIScrollViewDelegate {
     public var screenWidth: CGFloat {
         return view.safeAreaLayoutGuide.layoutFrame.size.width
     }
@@ -92,17 +92,19 @@ class EntityInfoController: UIViewController {
     
     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.isScrollEnabled = true
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
     
     func setupViews() {
         view.addSubview(scrollView)
+        scrollView.delegate = self
+        
         scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        // this is important for scrolling
         scrollView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
         scrollView.addSubview(englishName)
@@ -112,25 +114,25 @@ class EntityInfoController: UIViewController {
         
         let margin = CGFloat(20)
         
-        englishName.topAnchor.constraint(equalTo: view.topAnchor, constant: margin).isActive = true
-        englishName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
+        englishName.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: margin).isActive = true
+        englishName.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: margin).isActive = true
         
         latinName.topAnchor.constraint(equalTo: englishName.bottomAnchor, constant: margin).isActive = true
-        latinName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
+        latinName.leftAnchor.constraint(equalTo: scrollView.leftAnchor, constant: margin).isActive = true
         
         photo.topAnchor.constraint(equalTo: latinName.bottomAnchor, constant: margin).isActive = true
         photo.widthAnchor.constraint(equalToConstant: screenWidth * 0.8).isActive = true
         photo.heightAnchor.constraint(equalToConstant: screenWidth * 0.8).isActive = true
-        photo.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        photo.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
 //        photo.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
 //        photo.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         photo.layer.cornerRadius = (screenWidth * 0.8) * 0.5
         
-        
-        
         infoText.topAnchor.constraint(equalTo: photo.bottomAnchor, constant: margin).isActive = true
-        infoText.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        infoText.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor).isActive = true
         infoText.widthAnchor.constraint(equalToConstant: 340).isActive = true
         infoText.numberOfLines = 0
+        
+        self.scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: self.infoText.frame.height + self.englishName.frame.height + latinName.frame.height + screenWidth * 0.8)
     }
 }
