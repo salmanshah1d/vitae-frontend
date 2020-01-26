@@ -18,7 +18,7 @@ class LeaderboardCell:UITableViewCell {
             }
             photo.image = UIImage(named: user.photo)
             name.text = user.name
-            score.text = "69000"
+            score.text = "\(user.score)"
             setupCellViews()
         }
     }

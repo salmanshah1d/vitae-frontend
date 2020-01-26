@@ -41,6 +41,7 @@ class LeaderboardController: UITableViewController {
                     for document in querySnapshot!.documents {
                         self.userArray.append(User(userDict: document.data(), userId: document.documentID))
                     }
+                    self.tableView.reloadData()
                 }
         }
     }
