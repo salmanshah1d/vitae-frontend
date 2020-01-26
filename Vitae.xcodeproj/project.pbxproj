@@ -24,6 +24,7 @@
 		22E6283E23DCC72B00BE5818 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6283D23DCC72B00BE5818 /* User.swift */; };
 		22E6284523DCC77200BE5818 /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E6284423DCC77200BE5818 /* LeaderboardCell.swift */; };
 		920A09DD23DD36E90020418A /* MapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 920A09DC23DD36E90020418A /* MapController.swift */; };
+		92E1D0F523DD57940084D1D8 /* EntityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E1D0F423DD57940084D1D8 /* EntityInfoController.swift */; };
 		B1ADC88D46BA397D0F42269E /* Pods_VitaeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB55D86026C78EE52ECDEF33 /* Pods_VitaeUITests.framework */; };
 		BAEE8016528DAD42049585A1 /* Pods_Vitae.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112D90823B13A94D91FBC951 /* Pods_Vitae.framework */; };
 /* End PBXBuildFile section */
@@ -72,6 +73,7 @@
 		2E3ED94407FECB428508B345 /* Pods_VitaeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VitaeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CAA910D844D6009DE94391B /* Pods-Vitae.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vitae.release.xcconfig"; path = "Target Support Files/Pods-Vitae/Pods-Vitae.release.xcconfig"; sourceTree = "<group>"; };
 		920A09DC23DD36E90020418A /* MapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapController.swift; sourceTree = "<group>"; };
+		92E1D0F423DD57940084D1D8 /* EntityInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityInfoController.swift; sourceTree = "<group>"; };
 		AF2E8621384BB801F40ADB1C /* Pods-VitaeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitaeTests.debug.xcconfig"; path = "Target Support Files/Pods-VitaeTests/Pods-VitaeTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B1FF27BCBFBAAB79E4D7832B /* Pods-Vitae.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vitae.debug.xcconfig"; path = "Target Support Files/Pods-Vitae/Pods-Vitae.debug.xcconfig"; sourceTree = "<group>"; };
 		C48187D338DFC1A0138FBB05 /* Pods-VitaeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitaeTests.release.xcconfig"; path = "Target Support Files/Pods-VitaeTests/Pods-VitaeTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				22E6283923DCC26800BE5818 /* LeaderboardController.swift */,
 				2201DD2623DCD592007C4E7B /* CameraController.swift */,
 				920A09DC23DD36E90020418A /* MapController.swift */,
+				92E1D0F423DD57940084D1D8 /* EntityInfoController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -450,6 +453,7 @@
 				22E6284523DCC77200BE5818 /* LeaderboardCell.swift in Sources */,
 				2234115F23DD59670050D55C /* Species.swift in Sources */,
 				22E6283A23DCC26800BE5818 /* LeaderboardController.swift in Sources */,
+				92E1D0F523DD57940084D1D8 /* EntityInfoController.swift in Sources */,
 				22E627CA23DCB0C900BE5818 /* AppDelegate.swift in Sources */,
 				22E6283823DCC1A500BE5818 /* TabBarController.swift in Sources */,
 				22E627CC23DCB0C900BE5818 /* SceneDelegate.swift in Sources */,
