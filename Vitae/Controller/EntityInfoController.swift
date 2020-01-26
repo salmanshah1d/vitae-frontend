@@ -88,7 +88,7 @@ class EntityInfoController: UIViewController, UIScrollViewDelegate {
     let photo: UIImageView = {
         let uv = UIImageView()
         uv.clipsToBounds = true
-        uv.contentMode = .scaleAspectFill
+        uv.contentMode = .scaleAspectFit
         uv.translatesAutoresizingMaskIntoConstraints = false
         
         return uv
