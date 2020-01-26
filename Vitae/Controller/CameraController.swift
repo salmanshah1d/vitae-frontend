@@ -69,13 +69,17 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         videoPreviewLayer.connection?.videoOrientation = .portrait
         cameraView.layer.addSublayer(videoPreviewLayer)
         
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let self = self else { return }
-            self.captureSession.startRunning()
-            DispatchQueue.main.async {
-                self.videoPreviewLayer.frame = self.cameraView.bounds
-            }
-        }
+        self.captureSession.startRunning()
+        self.videoPreviewLayer.frame = self.cameraView.bounds
+
+        
+//        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+//            guard let self = self else { return }
+//            self.captureSession.startRunning()
+//            DispatchQueue.main.async {
+//                self.videoPreviewLayer.frame = self.cameraView.bounds
+//            }
+//        }
     }
 
     override func viewDidLoad() {

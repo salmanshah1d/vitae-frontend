@@ -33,7 +33,7 @@ class TabBarController: UITabBarController {
         let dashboardController = CameraController()
         dashboardController.tabBarItem = UITabBarItem(title: "Camera", image: UIImage(named: "camera"), tag: 200)
         
-        let profileController = UIViewController()
+        let profileController = MapController()
         profileController.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(named: "settings"), tag: 300)
         
         viewControllers = [leaderboardController, dashboardController, profileController]
