@@ -13,6 +13,10 @@ import FirebaseStorage
 import FirebaseUI
 
 class EntityInfoController: UIViewController {
+    public var screenWidth: CGFloat {
+        return view.safeAreaLayoutGuide.layoutFrame.size.width
+    }
+    
     var user: User? {
         didSet {
             guard let user = user else {
@@ -82,6 +86,7 @@ class EntityInfoController: UIViewController {
         uv.clipsToBounds = true
         uv.contentMode = .scaleAspectFit
         uv.translatesAutoresizingMaskIntoConstraints = false
+        
         return uv
     }()
     
@@ -100,10 +105,16 @@ class EntityInfoController: UIViewController {
         latinName.leftAnchor.constraint(equalTo: view.leftAnchor, constant: margin).isActive = true
         
         photo.topAnchor.constraint(equalTo: latinName.bottomAnchor, constant: margin).isActive = true
-        photo.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        photo.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        photo.widthAnchor.constraint(equalToConstant: screenWidth * 0.8).isActive = true
+        photo.heightAnchor.constraint(equalToConstant: screenWidth * 0.8).isActive = true
+        photo.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        photo.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+//        photo.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        photo.layer.cornerRadius = (screenWidth * 0.8) * 0.5
         
-        infoText.topAnchor.constraint(equalTo: photo.bottomAnchor).isActive = true
+        
+        
+        infoText.topAnchor.constraint(equalTo: photo.bottomAnchor, constant: margin).isActive = true
         infoText.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         infoText.widthAnchor.constraint(equalToConstant: 300).isActive = true
         infoText.numberOfLines = 0
