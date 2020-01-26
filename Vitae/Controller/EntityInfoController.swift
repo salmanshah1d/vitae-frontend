@@ -23,7 +23,7 @@ class EntityInfoController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(hexString: "#d1d8e0", alpha: 0.6)
         setupViews()
     }
     
