@@ -10,6 +10,9 @@ import UIKit
 import SwipeableTabBarController
 
 class TabBarController: UITabBarController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

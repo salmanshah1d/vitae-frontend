@@ -10,6 +10,10 @@ import UIKit
 import AVFoundation
 
 class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
+    // Change status bar color to light
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!

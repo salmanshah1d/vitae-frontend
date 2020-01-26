@@ -18,6 +18,7 @@ class LeaderboardCell:UITableViewCell {
             }
             photo.image = UIImage(named: user.photo)
             name.text = user.name
+            score.text = "69000"
             setupCellViews()
         }
     }
@@ -26,7 +27,7 @@ class LeaderboardCell:UITableViewCell {
         let uv = UIImageView()
         uv.clipsToBounds = true
         uv.contentMode = .scaleAspectFill
-        uv.backgroundColor = .systemBlue
+        uv.backgroundColor = UIColor(hexString: "#26de81")
         uv.translatesAutoresizingMaskIntoConstraints = false
         return uv
     }()
@@ -35,19 +36,24 @@ class LeaderboardCell:UITableViewCell {
         let ul = UILabel()
         ul.translatesAutoresizingMaskIntoConstraints = false
         ul.adjustsFontSizeToFitWidth = true
-        ul.font = UIFont.systemFont(ofSize: 40)
+        ul.font = UIFont.systemFont(ofSize: 20)
         return ul
     }()
     
     let score:UILabel = {
         let ul = UILabel()
         ul.translatesAutoresizingMaskIntoConstraints = false
+        ul.adjustsFontSizeToFitWidth = true
+        ul.font = UIFont.systemFont(ofSize: 28)
+        ul.textColor = UIColor(hexString: "#f7b731")
         return ul
     }()
+    
     
     func setupCellViews() {
         addSubview(photo)
         addSubview(name)
+        addSubview(score)
         
         let margin = CGFloat(20)
         let imageSize = size - margin
@@ -59,5 +65,9 @@ class LeaderboardCell:UITableViewCell {
         
         name.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         name.leftAnchor.constraint(equalTo: photo.rightAnchor, constant: margin).isActive = true
+        
+        score.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        score.rightAnchor.constraint(equalTo: rightAnchor, constant: -margin).isActive = true
+        
     }
 }
