@@ -8,6 +8,7 @@ target 'Vitae' do
   # Pods for Vitae
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
+  pod 'FirebaseUI'
 
   target 'VitaeTests' do
     inherit! :search_paths

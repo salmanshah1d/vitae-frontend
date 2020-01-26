@@ -93,7 +93,8 @@ class LeaderboardController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(userArray[indexPath.item].name)
-        navigationController?.present(MapController(), animated: true, completion: nil)
+        let vc = EntityInfoController()
+        vc.user = userArray[indexPath.item]
+        navigationController?.present(vc, animated: true, completion: nil)
     }
 }

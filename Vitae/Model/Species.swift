@@ -14,11 +14,13 @@ class Species:NSObject {
     var latinName: String
     var bio: String
     var photo: String
+    var invasive: Bool
     
     init(userDict: [String:Any]) {
-        self.name = userDict["species"] as? String ?? ""
-        self.latinName = userDict["latinName"] as? String ?? ""
+        self.name = userDict["name"] as? String ?? ""
+        self.latinName = userDict["latin_name"] as? String ?? ""
         self.bio = userDict["summary"] as? String ?? ""
-        self.photo = userDict["image"] as? String ?? ""
+        self.photo = userDict["wiki_image"] as? String ?? ""
+        self.invasive = userDict["invasive"] as? Bool ?? false
     }
 }

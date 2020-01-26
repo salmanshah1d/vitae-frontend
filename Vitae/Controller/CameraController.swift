@@ -254,8 +254,19 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, CLLocat
                         }
                 
                         // Convert HTTP Response Data to a simple String
-                        if let data = data, let dataString = String(data: data, encoding: .utf8) {
-                            print("Response data string:\n \(dataString)")
+                        do {
+                            if let speciesDict = try JSONSerialization.jsonObject(with: data!, options: []) as? [String : Any] {
+                                if speciesDict["error"] == nil {
+                                    DispatchQueue.main.async {
+                                        let vc = EntityInfoController()
+                                        let species = Species(userDict: speciesDict)
+                                        vc.species = species
+                                        self.navigationController?.present(vc, animated: true, completion: nil)
+                                    }
+                                }
+                            }
+                        } catch let error as NSError {
+                            print(error.localizedDescription)
                         }
                     }
                     task.resume()

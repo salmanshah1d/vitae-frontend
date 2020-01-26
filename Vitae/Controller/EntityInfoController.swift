@@ -7,11 +7,37 @@
 //
 
 import Foundation
-
 import UIKit
 import FirebaseFirestore
+import FirebaseStorage
+import FirebaseUI
 
 class EntityInfoController: UIViewController {
+    var user: User? {
+        didSet {
+            guard let user = user else {
+                return
+            }
+            englishName.text = user.name
+            photo.image = UIImage(named: user.photo)
+            latinName.text = "\(user.score)"
+            infoText.text = user.bio
+        }
+    }
+    
+    var species: Species? {
+        didSet {
+            guard let species = species else {
+                return
+            }
+            englishName.text = species.name
+            let url = URL(string: species.photo)
+            photo.sd_setImage(with: url, completed: nil)
+            latinName.text = species.latinName
+            infoText.text = species.bio
+        }
+    }
+    
     // Change status bar color to light
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
