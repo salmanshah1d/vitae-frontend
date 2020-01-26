@@ -111,6 +111,8 @@ class EntityInfoController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(latinName)
         scrollView.addSubview(photo)
         scrollView.addSubview(infoText)
+        scrollView.bounces = true
+        scrollView.isScrollEnabled = true
         
         let margin = CGFloat(20)
         
