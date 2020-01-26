@@ -10,6 +10,10 @@ import UIKit
 import FirebaseFirestore
 
 class LeaderboardController: UITableViewController {
+    // Change status bar color to light
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     let cellId = "cellId"
     let userArray: [User] = []
@@ -18,6 +22,7 @@ class LeaderboardController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.navigationItem.title = "Leaderboard 🏆"
+        // UIColor(hexString: "#20bf6b")
     }
     
     override func viewDidLoad() {

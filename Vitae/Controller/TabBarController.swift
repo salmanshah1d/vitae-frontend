@@ -9,6 +9,9 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     let user: User
     
